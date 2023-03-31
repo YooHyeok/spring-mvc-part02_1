@@ -130,4 +130,13 @@ public class BasicController {
         return "basic/operation";
     }
 
+    /**
+     * 타임리프 속성 값 설정 (치환)
+     * templates/basic/attribute.html
+     */
+    @GetMapping("/attribute")
+    public String attribute() {
+        return "basic/attribute";
+    }
+
 }
