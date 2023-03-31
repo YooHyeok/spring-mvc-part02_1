@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -165,6 +166,16 @@ public class BasicController {
     public String condition(Model model) {
         addUser(model);
         return "basic/condition";
+    }
+
+    /**
+     * 타임리프 주석
+     * templates/basic/comments.html
+     */
+    @GetMapping("comments")
+    public String comments(Model model) {
+        model.addAttribute("data", "Spring!");
+        return "/basic/comments";
     }
 
 }

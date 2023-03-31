@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>예시</h1>
+<span th:text="${data}">html data</span>
+<h1>1. 표준 HTML 주석</h1>
+<!--
+<span th:text="${data}">html data</span>
+-->
+<h1>2. 타임리프 파서 주석</h1> <!-- 렌더링 할 때 보여주지 않는다.  JSP의 주석과 같다. -->
+<!--/* [[${data}]] */-->
+<!--/*-->
+<span th:text="${data}">html data</span>
+<!--*/-->
+<h1>3. 타임리프 프로토타입 주석</h1> <!-- 파일을 직접 열어볼때 주석으로 감싼 내용이 보여지지 않는다. 웹브라우저에서 렌더링이 되어서만 태그가 보인다-->
+<!--/*/
+<span th:text="${data}">html data</span>
+/*/-->
+</body>
+</html>
