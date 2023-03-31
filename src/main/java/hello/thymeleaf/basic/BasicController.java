@@ -20,6 +20,7 @@ public class BasicController {
 
     /**
      * 타임리프 기본 문법
+     * templates/baisc/text-basic.html
      */
     @GetMapping("text-basic")
     public String textBasic(Model model) {
@@ -30,6 +31,7 @@ public class BasicController {
     /**
      * 타임리프 escape 제어
      * 텍스트 문자열 안에 Html 엘리먼트 태그를 추가한다.
+     * templates/baisc/text-unescaped.html
      */
     @GetMapping("text-unescaped")
     public String textUnescaped(Model model) {
@@ -37,6 +39,10 @@ public class BasicController {
         return "basic/text-unescaped";
     }
 
+    /**
+     * 타임리프 Spring El 표현식 - Object, List, Map
+     * templates/baisc/variable.html
+     */
     @GetMapping("/variable")
     public String variable(Model model) {
         User userA = new User("userA", 10);
@@ -54,19 +60,23 @@ public class BasicController {
         return "basic/variable";
     }
 
+    /**
+     * 타임리프 기본 객체
+     * templates/baisc/basic-objects.html
+     */
     @GetMapping("/basic-objects")
     public String basicObjects(HttpSession session) {
         session.setAttribute("sessionData", "Hello Session");
         return "basic/basic-objects";
     }
-
+    // --------------타임리프 기본객체 컴포넌트--------------------------
     @Component("helloBean")
     static class HelloBean {
         public String hello(String data) {
             return "Hello " + data;
         }
     }
-
+    // --------------타임리프 기본객체 오브젝트--------------------------
     @Data
     static class User {
         private String username;
@@ -77,12 +87,21 @@ public class BasicController {
             this.age = age;
         }
     }
+
+    /**
+     * 타임리프 유틸리티 객체 및 날짜
+     * templates/baisc/date.html
+     */
     @GetMapping("/date")
     public String date(Model model) {
         model.addAttribute("localDateTime", LocalDateTime.now());
         return "basic/date";
     }
 
+    /**
+     * 타임리프 URL Link
+     * templates/baisc/link.html
+     */
     @GetMapping("link")
     public String link(Model model) {
         model.addAttribute("param1", "data1");
@@ -90,6 +109,10 @@ public class BasicController {
         return "/basic/link";
     }
 
+    /**
+     * 타임리프 리터럴 연산
+     * templates/baisc/literal.html
+     */
     @GetMapping("literal")
     public String literal(Model model) {
         model.addAttribute("data", "Spring!");
