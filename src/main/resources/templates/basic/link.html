@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>URL 링크</h1>
+<ul>
+  <!-- url링크 기본 문법 @{}에 /를 포함한 매핑주소를 입력한다-->
+  <li><a th:href="@{/hello}">basic url</a></li>
+  <!-- 복수개의 파라미터 ()괄호안에 나열 -> /hello?param1=data1&param2=data2 -->
+  <li><a th:href="@{/hello(param1=${param1}, param2=${param2})}">hello query param</a></li>
+  <!-- PathVariable 복수개 파라미터는 /hello/{변수명1}/{변수명2} 입력 후 마지막 변수 뒤에()괄호안에 나열  -> /hello/data1/data2 -->
+  <li><a th:href="@{/hello/{param1}/{param2}(param1=${param1}, param2=${param2})}">path variable</a></li>
+  <!-- pathVariable + QueryParameter : /hello{변수명} 지정 후 마지막 변수 뒤에 () 안에 복수개를 나열 -> /hello/data1?param2=data -->
+  <li><a th:href="@{/hello/{param1}(param1=${param1}, param2=${param2})}">path variable + query parameter</a></li>
+</ul>
+</body>
+</html>
