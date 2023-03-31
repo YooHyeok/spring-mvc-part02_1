@@ -156,4 +156,15 @@ public class BasicController {
         list.add(new User("userC", 30));
         model.addAttribute("users", list);
     }
+
+    /**
+     * 타임리프 조건부 평가
+     * templates/basic/condition.html
+     */
+    @GetMapping("condition")
+    public String condition(Model model) {
+        addUser(model);
+        return "basic/condition";
+    }
+
 }
