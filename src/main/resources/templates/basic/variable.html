@@ -27,5 +27,9 @@
     <li>${userMap['userA']['username']} = <span th:text="${userMap['userA']['username']}"></span></li>
     <li>${userMap['userA'].getUsername()} = <span th:text="${userMap['userA'].getUsername()}"></span></li>
   </ul>
+<h1>지역 변수 - (th:with)</h1><!-- 지역변수는 선언한 태그 내부에서만 사용 가능하다. scope를 벗어나게되면 사용할 수 없다.-->
+  <div th:with="first=${users[0]}"> <!-- 넘겨받은 users[0] 값을 first에 저장-->
+    <p>처음 사람의 이름은 <span th:text="${first.username}"></span></p> <!-- first 변수에 접근 users[0].username 과 같다. -->
+  </div>
 </body>
 </html>
