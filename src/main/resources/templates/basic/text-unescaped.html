@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>text vs utext</h1>
+  <ul>
+    <li>th:text = <span th:text="${data}"></span> </li>
+    <li>th:utext = <span th:utext="${data}"></span> </li>
+  </ul>
+  <h1><span th:inline="none">[[...]] vs [(...)]</span></h1>
+  <!-- 타임리프가 textnode의 [[...]]를 해석하기 때문에 해당 속성어를 통해 타임리프 해석을 제어한다. (해석하면 ... 으로 출력이된다.)-->
+  <ul>
+    <li><span th:inline="none">[[...]]</span>[[${data}]]</li>
+    <li><span th:inline="none">[(...)]</span>[(${data})]</li>
+  </ul>
+</body>
+</html>
