@@ -140,16 +140,20 @@ public class BasicController {
     }
 
     /**
-     *
+     * 타임리프 반복
+     * templates/basic/each.html
      */
     @GetMapping("each")
     public String each(Model model) {
+        addUser(model);
+        return "basic/each";
+    }
+
+    private void addUser(Model model) {
         List<User> list = new ArrayList<>();
         list.add(new User("userA", 10));
         list.add(new User("userB", 20));
         list.add(new User("userC", 30));
         model.addAttribute("users", list);
-        return "basic/each";
     }
-
 }
