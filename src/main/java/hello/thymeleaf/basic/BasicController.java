@@ -110,13 +110,24 @@ public class BasicController {
     }
 
     /**
-     * 타임리프 리터럴 연산
+     * 타임리프 리터럴 및 연산
      * templates/baisc/literal.html
      */
     @GetMapping("literal")
     public String literal(Model model) {
         model.addAttribute("data", "Spring!");
         return "basic/literal";
+    }
+
+    /**
+     * 타임리프 순수 연산
+     * templates/basic/operation.html
+     */
+    @GetMapping("operation")
+    public String operation(Model model) {
+        model.addAttribute("nullData", null);
+        model.addAttribute("data", "Spring!");
+        return "basic/operation";
     }
 
 }
