@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- common_header fragment 매개변수로 title태그와 link태그를 각각 넘겨 replace 치환하여 common_header fragment를 렌더링한다.-->
+<head th:replace="template/layout/base :: common_header(~{::title}, ~{::link})"> <!-- fragment명(~{::태그명}) 문법-->
+    <title>메인 타이틀</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/themes/smoothness/jquery-ui.css}">
+</head>
+<body>
+    메인 컨텐츠
+</body>
+</html>
