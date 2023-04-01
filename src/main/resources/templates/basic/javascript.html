@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--자바스크립트 인라인 사용 전 :: 오류발생, 네추럴템플릿 지원X 객체를 toString값 그대로 넘겨받는다.-->
+<script>
+  /* Uncaught ReferenceError: userA is not defined 오류 발생 */
+  var username = [[${user.username}]]; /* ""쌍따옴표가 벗겨진 순수한 값으로 치환된다. "[[${user.username}]]" 이와같이 감싸 선언해야한다.*/
+  var age = [[${user.age}]];
+
+  // escape 지원 X
+  var username = [[${escape.username}]]; /* "user\"A\"" => escape&quot;A&quot;;로 출력.*/
+
+  //자바스크립트 내추럴 템플릿
+  var username2 = /*[[${user.username}]]*/ "test username";  // /*userA*/ "test username" 으로 실행된다.
+
+  //객체
+  var user = [[${user}]]; /* ToString 값 BasicController.User(username=userA, age=10)*/
+</script>
+
+<!--자바스크립트 인라인 사용 후 :: 문자의 경우 "" 쌍따옴표로 치환해주고 네추럴 탬플릿을 지원하며 객체를 JSON 형태로 치환한다. -->
+<script th:inline="javascript">
+  var username = [[${user.username}]]; /* ""쌍따옴표가 씌워진 String 문자열 값으로 치환된다.*/
+  var age = [[${user.age}]];
+
+  // escape 지원 O
+  var username = [[${escape.username}]]; /* "user\"A\"" 그대로 출력 자동으로 escape 처리해준다*/
+
+  //자바스크립트 내추럴 템플릿
+  var username2 = /*[[${user.username}]]*/ "test username"; /* test username 대신 userA로 치환된다 */
+
+  //객체
+  var user = [[${user}]]
+</script>
+
+<!--자바스크립트 인라인 each-->
+<script th:inline="javascript">
+    [# th:each="user, stat : ${users}"]
+    var user[[${stat.count}]] = [[${user}]]; // 루프 안에서 변수명을 동적으로 변경할 수 있다.
+    [/]
+</script>
+</body>
+</html>

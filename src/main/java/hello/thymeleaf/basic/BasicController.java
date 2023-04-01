@@ -181,12 +181,25 @@ public class BasicController {
     }
 
     /**
-     * 타임리프 <th:block>
+     * 타임리프 <th:block></th:block>
      * templates/basic/block.html
      */
     @GetMapping("block")
     public String block(Model model) {
         addUser(model);
         return "basic/block";
+    }
+
+    /**
+     * 타임리프 자바스크립트 인라인(자동 치환)
+     * <scipt th:inline="javascript"></script>
+     * templates/basic/javascript.html
+     */
+    @GetMapping("javascript")
+    public String javascript(Model model) {
+        model.addAttribute("user", new User("userA", 10));
+        model.addAttribute("escape", new User("escape\"A\"", 10));
+        addUser(model);
+        return "basic/javascript";
     }
 }
