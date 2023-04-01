@@ -70,6 +70,7 @@ public class BasicController {
         session.setAttribute("sessionData", "Hello Session");
         return "basic/basic-objects";
     }
+
     // --------------타임리프 기본객체 컴포넌트--------------------------
     @Component("helloBean")
     static class HelloBean {
@@ -77,6 +78,7 @@ public class BasicController {
             return "Hello " + data;
         }
     }
+
     // --------------타임리프 기본객체 오브젝트--------------------------
     @Data
     static class User {
@@ -175,7 +177,16 @@ public class BasicController {
     @GetMapping("comments")
     public String comments(Model model) {
         model.addAttribute("data", "Spring!");
-        return "/basic/comments";
+        return "basic/comments";
     }
 
+    /**
+     * 타임리프 <th:block>
+     * templates/basic/block.html
+     */
+    @GetMapping("block")
+    public String block(Model model) {
+        addUser(model);
+        return "basic/block";
+    }
 }
