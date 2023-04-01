@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>부분 포함</h1>
+<h2>부분 포함 insert</h2>
+<!-- footer.html에 선언된 th:fragment="copy" 속성을 갖는 태그를 템플릿 조각으로 가져와서 사용한다는 의미 -->
+<!-- ~{fragment 경로 :: fragment 이름} 형태로 선언한다. -->
+<!--th:insert 를 사용하면 현재 태그( div ) 내부에 추가한다-->
+<div th:insert="~{template/fragment/footer :: copy}"><!-- insert : 태그의 자식 영역에 템플릿 조각을 추가 --></div>
+</body>
+
+<h2>부분 포함 replace</h2>
+<!--th:replace 를 사용하면 현재 태그( div )를 대체한다-->
+<div th:replace="~{template/fragment/footer :: copy}"></div> <!--replace : 현재 div태그를 삭제하고 템플릿 조각을 대신 렌더링한다.-->
+
+<h2>부분 포함 단순 표현식</h2>
+<!-- ~{...} 를 사용하는 것이 원칙이지만 템플릿 조각을 사용하는 코드가 단순하면 생략 가능 -->
+<div th:replace="template/fragment/footer :: copy"></div>
+
+<h1>파라미터 사용</h1>
+<!-- 동적으로 조각 렌더링 가능 -->
+<div th:replace="~{template/fragment/footer :: copyParam ('데이터1', '데이터2')}"></div> <!-- fragment에 값을 넘긴뒤 불러와 렌더링한다. -->
+
+<h1>파라미터 사용 부분 포함 단순 표현식</h1>
+<div th:replace="template/fragment/footer :: copyParam ('데이터1', '데이터2')"></div>
+</html>
